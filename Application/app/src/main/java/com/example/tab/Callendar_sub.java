@@ -42,7 +42,7 @@ public class Callendar_sub extends AppCompatActivity {
     public String readDay = null;
     public String str = null;
     public Button cha_Btn, del_Btn, save_Btn, image_add, address_add;
-    public TextView friends, diaryTextView, textView2, image_text, address_text;
+    public TextView diaryTextView, textView2, image_text, address_text;
     public EditText contextEditText;
 
     RecyclerView recyclerView;
@@ -68,7 +68,6 @@ public class Callendar_sub extends AppCompatActivity {
         }
 
         imageView = findViewById(R.id.imageView2);
-        friends = findViewById(R.id.friends);
         diaryTextView = findViewById(R.id.diaryTextView);
         save_Btn = findViewById(R.id.save_Btn);
         del_Btn = findViewById(R.id.del_Btn);
@@ -350,10 +349,6 @@ public class Callendar_sub extends AppCompatActivity {
             // Save text content
             String content = contextEditText.getText().toString();
             fos.write(content.getBytes());
-
-            // Save friends content
-            String friendsContent = friends.getText().toString();
-            fos.write(friendsContent.getBytes());
 
 
             fos.close();

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#CED2E8"
     tools:context=".MainActivity">
 
 
@@ -19,6 +20,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/nanumbrush"
         app:queryHint="Search here..."
         app:iconifiedByDefault="false" />
 
@@ -37,7 +39,8 @@
         android:layout_height="wrap_content"
         android:text = "No Data"
         android:textSize = "30sp"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/nanumpen"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_btn"
@@ -47,7 +50,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@android:color/holo_green_dark"
+        android:backgroundTint="#6178E8"
         app:tint="@android:color/white"
         app:srcCompat = "@drawable/ic_add"/>
 </RelativeLayout>
