@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="#CED2E8"
     tools:context=".AddActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -26,18 +27,25 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
+        <android.widget.Button
             android:id="@+id/picture_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Take Photo" />
+            android:text="Take Photo"
+            android:textSize="18sp"
+            android:background="#6178E8"
+            android:fontFamily="@font/nanumpen"/>
 
-        <Button
+        <android.widget.Button
             android:id="@+id/select_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text = "Select Photo" />
+            android:text = "Select Photo"
+            android:textSize="18sp"
+            android:fontFamily="@font/nanumpen"
+            android:background="#6178E8" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <EditText
@@ -46,7 +54,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:hint="name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textSize="16sp"
+        android:fontFamily="@font/nanumbrush"/>
 
     <EditText
         android:id="@+id/add_phone_edit"
@@ -55,14 +65,19 @@
         android:layout_marginTop="30dp"
         android:hint="phone number"
         android:maxLength="13"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:textSize="16sp"
+        android:fontFamily="@font/nanumbrush"/>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/add_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:text="Save" />
+        android:text="Save"
+        android:textSize="18sp"
+        android:background="#6178E8"
+        android:fontFamily="@font/nanumpen"/>
 
 </LinearLayout>

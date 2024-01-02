@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".AddActivity">
+    tools:context=".AddActivity"
+    android:background="#CED2E8">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/update_image_view"
@@ -33,7 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:hint="name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textSize="16sp"
+        android:fontFamily="@font/nanumbrush" />
 
     <EditText
         android:id="@+id/update_phone_edit"
@@ -42,7 +45,9 @@
         android:layout_marginTop="30dp"
         android:hint="phone number"
         android:maxLength="13"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:textSize="16sp"
+        android:fontFamily="@font/nanumbrush"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -51,18 +56,24 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
+        <android.widget.Button
             android:id="@+id/edit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit" />
+            android:text="Edit"
+            android:background="#6178E8"
+            android:textSize="18sp"
+            android:fontFamily="@font/nanumpen" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/delete_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text = "Delete" />
+            android:text = "Delete"
+            android:background="#6178E8"
+            android:textSize="18sp"
+            android:fontFamily="@font/nanumpen" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </LinearLayout>

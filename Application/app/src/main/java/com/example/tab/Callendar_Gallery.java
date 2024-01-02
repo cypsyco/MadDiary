@@ -89,7 +89,14 @@ public class Callendar_Gallery extends AppCompatActivity {
             try {
                 String img_path = getCacheDir() + "/" + ask;   // 내부 저장소에 저장되어 있는 이미지 경로
                 Bitmap bm = BitmapFactory.decodeFile(img_path);
+                while(bm == null){
+                    i++;
+                    ask = img_name.concat(Integer.toString(i));
+                    img_path = getCacheDir() + "/" + ask;
+                    bm = BitmapFactory.decodeFile(img_path);
+                }
                 imageView.setImageBitmap(bm);   // 내부 저장소에 저장된 이미지를 이미지뷰에 셋
+
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "파일 로드 실패", Toast.LENGTH_SHORT).show();
             }

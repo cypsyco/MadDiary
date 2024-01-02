@@ -10,9 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven(uri("jitpack.io"))
+        jcenter()
     }
 }
 
 rootProject.name = "New"
 include(":app")
- 
