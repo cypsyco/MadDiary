@@ -17,5 +17,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.bluehomestudio.luckywheel.LuckyWheel
+        android:id="@+id/luck_wheel"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+        app:background_color="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/luck_wheel" />
+
+    <Button
+        android:id="@+id/spin_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/luck_wheel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="4dp"
+        android:text="오늘의 운세"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/luck_wheel"
+        app:layout_constraintEnd_toEndOf="@+id/luck_wheel"
+        app:layout_constraintStart_toStartOf="@+id/luck_wheel" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
