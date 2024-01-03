@@ -5,12 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
-public class viewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    public viewPagerAdapter(@NonNull FragmentManager fm) {
+    public ViewPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
@@ -18,9 +16,9 @@ public class viewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if(position==0){
-            return new ProfileFragment();
+            return new CalendarFragment();
         } else if (position==1) {
-            return new AddressFragment();
+            return new PhoneBookFragment();
         }
         else{
             return new GalleryFragment();
@@ -36,9 +34,9 @@ public class viewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if(position==0){
-            return "Profile";
+            return "Calendar";
         } else if (position==1) {
-            return "Address";
+            return "Phonebook";
         }
         else{
             return "Gallery";

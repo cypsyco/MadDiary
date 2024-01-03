@@ -13,21 +13,21 @@
         android:theme="@style/Theme.Tab"
         tools:targetApi="31">
         <activity
-            android:name=".Callendar_Gallery"
+            android:name=".CalendarGallery"
             android:exported="false"
             android:noHistory = "true"/>
         <activity
-            android:name=".Callendar_Address"
+            android:name=".CalendarAddress"
             android:exported="false"
             android:noHistory = "true" />
         <activity
-            android:name=".AddActivity"
+            android:name=".PhoneBookAddActivity"
             android:exported="false"
-            android:parentActivityName=".AddressFragment" />
+            android:parentActivityName=".PhoneBookFragment" />
         <activity
-            android:name=".DetailActivity"
+            android:name=".PhoneBookDetailActivity"
             android:exported="false"
-            android:parentActivityName=".AddressFragment" />
+            android:parentActivityName=".PhoneBookFragment" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Callendar_sub"
+            android:name=".CalendarDate"
             android:exported="false"
             android:noHistory = "true" />
     </application>

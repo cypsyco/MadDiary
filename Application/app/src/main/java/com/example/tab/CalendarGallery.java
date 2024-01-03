@@ -6,52 +6,32 @@ import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import android.widget.GridView;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
-import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import android.content.Context;
-
-import androidx.appcompat.app.AlertDialog;
-
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-
-import android.widget.GridView;
 
 
-public class Callendar_Gallery extends AppCompatActivity {
+public class CalendarGallery extends AppCompatActivity {
     String img_name = "osz.png";
     int year, month, dayOfMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_callendar_gallery);
+        setContentView(R.layout.activity_calendar_gallery);
         Intent intent = getIntent();
         year = intent.getIntExtra("year", 0);
         month = intent.getIntExtra("month", 0);
         dayOfMonth = intent.getIntExtra("dayOfMonth", 0);
         final GridView gv = findViewById(R.id.gridView);
-        MyGridAdapter gAdapter = new MyGridAdapter(Callendar_Gallery.this);
+        MyGridAdapter gAdapter = new MyGridAdapter(CalendarGallery.this);
         gv.setAdapter(gAdapter);
     }
 
@@ -113,7 +93,7 @@ public class Callendar_Gallery extends AppCompatActivity {
                         bm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                         byte[] byteArray = stream.toByteArray();
                         String prev_class = "gallery";
-                        Intent intent = new Intent(Callendar_Gallery.this, Callendar_sub.class);
+                        Intent intent = new Intent(CalendarGallery.this, CalendarDate.class);
                         intent.putExtra("year", year);
                         intent.putExtra("month", month);
                         intent.putExtra("dayOfMonth", dayOfMonth);

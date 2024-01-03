@@ -1,30 +1,18 @@
 package com.example.tab;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
 import android.widget.TextView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class AddressFragment extends Fragment {
-
-    public AddressFragment() {
-        // Required empty public constructor
-    }
+public class CalendarAddress extends AppCompatActivity {
 
     PhoneBookDB db;
     ArrayList<PhoneBook> phoneList = new ArrayList<>();
@@ -33,25 +21,38 @@ public class AddressFragment extends Fragment {
     TextView noDataText;
     SearchView searchView;
 
+    int year = 0;
+    int month = 0;
+    int dayOfMonth = 0;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_address, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_calendar_address);
 
-        noDataText = v.findViewById(R.id.noData_text);
-        recyclerView = v.findViewById(R.id.recyclerView);
+        noDataText = findViewById(R.id.noData_text);
+        recyclerView = findViewById(R.id.recyclerView);
 
-        adapter = new PhoneBookAdapter(getContext(), AddressFragment.class, 0, 0, 0);
+        //callendar intent
+        Intent intent = getIntent();
+        if (intent != null) {
+            // 받은 데이터 처리
+            year = intent.getIntExtra("year", 0);
+            month = intent.getIntExtra("month", 0);
+            dayOfMonth = intent.getIntExtra("dayOfMonth", 0);
+        }
+
+        adapter = new PhoneBookAdapter(this, CalendarAddress.class, year, month, dayOfMonth);
 
         recyclerView.setAdapter(adapter);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        db = new PhoneBookDB(getContext());
+        db = new PhoneBookDB(this);
 
         storeDataInArray();
 
-        searchView = v.findViewById(R.id.searchView);
+        searchView = findViewById(R.id.searchView);
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -65,18 +66,6 @@ public class AddressFragment extends Fragment {
                 return false;
             }
         });
-
-        FloatingActionButton addBtn = v.findViewById(R.id.add_btn);
-        addBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // Inflate the layout for this fragment
-        return v;
     }
 
     private void filterList(String text) {
@@ -91,8 +80,6 @@ public class AddressFragment extends Fragment {
         }
         adapter.filterList(filteredList);
     }
-
-
 
     private void storeDataInArray() {
 
@@ -117,5 +104,4 @@ public class AddressFragment extends Fragment {
             }
         }
     }
-
 }

@@ -37,7 +37,7 @@ public class PhoneBookAdapter extends RecyclerView.Adapter<PhoneBookAdapter.MyVi
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.phone_item, parent, false);
+        View view = inflater.inflate(R.layout.phonebook_item, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -57,16 +57,16 @@ public class PhoneBookAdapter extends RecyclerView.Adapter<PhoneBookAdapter.MyVi
             @Override
             public void onClick(View v) {
                 Intent intent;
-                if (callerClass == AddressFragment.class) {
+                if (callerClass == PhoneBookFragment.class) {
                     // AddressFragment에서 호출했을 때의 동작
-                    intent = new Intent(context, DetailActivity.class);
+                    intent = new Intent(context, PhoneBookDetailActivity.class);
                     intent.putExtra("id", phone.getPhone_id());
                     intent.putExtra("name", phone.getPhone_name());
                     intent.putExtra("phone_number", phone.getPhone_number());
                     intent.putExtra("image", phoneImage);
-                } else if (callerClass == Callendar_Address.class) {
+                } else if (callerClass == CalendarAddress.class) {
                     // CalendarAddress에서 호출했을 때의 동작
-                    intent = new Intent(context, Callendar_sub.class);
+                    intent = new Intent(context, CalendarDate.class);
                     intent.putExtra("id", phone.getPhone_id());
                     intent.putExtra("name", phone.getPhone_name());
                     intent.putExtra("phone_number", phone.getPhone_number());
@@ -76,7 +76,7 @@ public class PhoneBookAdapter extends RecyclerView.Adapter<PhoneBookAdapter.MyVi
                     intent.putExtra("dayOfMonth", dayOfMonth);
                 } else {
                     // 기본 동작
-                    intent = new Intent(context, DetailActivity.class);
+                    intent = new Intent(context, PhoneBookDetailActivity.class);
                     intent.putExtra("id", phone.getPhone_id());
                     intent.putExtra("name", phone.getPhone_name());
                     intent.putExtra("phone_number", phone.getPhone_number());

@@ -42,4 +42,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("de.hdodenhof:circleimageview:3.1.0") //Circle ImageView
     implementation ("com.github.ybq:Android-SpinKit:1.4.0") //Loading Animation
+    implementation ("com.github.mmoamenn:LuckyWheel_Android:0.3.0")
 }
