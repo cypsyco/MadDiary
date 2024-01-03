@@ -94,6 +94,7 @@ public class CalendarGallery extends AppCompatActivity {
                         byte[] byteArray = stream.toByteArray();
                         String prev_class = "gallery";
                         Intent intent = new Intent(CalendarGallery.this, CalendarDate.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("year", year);
                         intent.putExtra("month", month);
                         intent.putExtra("dayOfMonth", dayOfMonth);

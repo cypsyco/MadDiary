@@ -74,6 +74,7 @@ public class PhoneBookAdapter extends RecyclerView.Adapter<PhoneBookAdapter.MyVi
                     intent.putExtra("year", year);
                     intent.putExtra("month", month);
                     intent.putExtra("dayOfMonth", dayOfMonth);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 } else {
                     // 기본 동작
                     intent = new Intent(context, PhoneBookDetailActivity.class);

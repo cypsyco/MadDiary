@@ -43,7 +43,7 @@ public class GalleryFragment extends Fragment {
     public int q = 0;
     String x = "";
     String img_name = "osz.png";
-    Button btn_insert, btn_prev, btn_next;
+    Button btn_insert;
     GridView gv;
     public GalleryFragment() {
         // Required empty public constructor
@@ -58,8 +58,6 @@ public class GalleryFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_gallery, container, false);
         btn_insert = v.findViewById(R.id.btn_insert);
         View a = inflater.inflate(R.layout.gallery_expanded, container, false);
-        btn_prev = a.findViewById(R.id.btn_prev);
-        btn_next = a.findViewById(R.id.btn_next);
         gv = v.findViewById(R.id.gridView);
         SharedPreferences pref = this.getActivity().getSharedPreferences("pref", android.app.Activity.MODE_PRIVATE);
         if ((pref != null) && (pref.contains("x"))) {  // pref가 비어있지 않고 x가 있으면 실행
@@ -146,9 +144,9 @@ public class GalleryFragment extends Fragment {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             ImageView imageView = new ImageView(context);
-            imageView.setLayoutParams(new ViewGroup.LayoutParams(357, 238));
+            imageView.setLayoutParams(new ViewGroup.LayoutParams(250, 250));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(5, 5, 5, 5);
+            imageView.setPadding(5, 400, 5, 5);
             String ask = img_name.concat(Integer.toString(i));
             try {
                 String img_path = getActivity().getCacheDir() + "/" + ask;   // 내부 저장소에 저장되어 있는 이미지 경로
@@ -181,8 +179,6 @@ public class GalleryFragment extends Fragment {
                     } catch (Exception e) {
                         Toast.makeText(getActivity().getApplicationContext(), "파일 로드 실패", Toast.LENGTH_SHORT).show();
                     }
-                    dlg.setTitle("이미지");
-                    dlg.setIcon(R.drawable.gallery);
                     dlg.setView(dialogView);
                     dlg.setNegativeButton("삭제", new DialogInterface.OnClickListener() {
                         @Override

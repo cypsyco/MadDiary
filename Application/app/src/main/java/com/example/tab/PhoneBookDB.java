@@ -69,12 +69,13 @@ public class PhoneBookDB extends SQLiteOpenHelper {
         }
     }
 
-    public void updateData(String id, String name, String phone_number){
+    public void updateData(String id, String name, String phone_number, byte[] phone_photo){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_NAME, name);
         cv.put(COLUMN_PHONE_NUMBER, phone_number);
+        cv.put(COLUMN_PHONE_PHOTO, phone_photo);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{id});
 
