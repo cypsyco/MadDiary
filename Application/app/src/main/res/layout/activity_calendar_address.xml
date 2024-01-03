@@ -37,20 +37,8 @@
         android:id = "@+id/noData_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "No Data"
+        android:text = "빈 주소록"
         android:textSize = "30sp"
         android:layout_centerInParent="true"
         android:fontFamily="@font/nanumpen"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#6178E8"
-        app:tint="@android:color/white"
-        app:srcCompat = "@drawable/ic_add"/>
 </RelativeLayout>

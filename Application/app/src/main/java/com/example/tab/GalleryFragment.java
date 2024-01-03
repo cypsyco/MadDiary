@@ -43,7 +43,8 @@ public class GalleryFragment extends Fragment {
     public int q = 0;
     String x = "";
     String img_name = "osz.png";
-    Button btn_insert;
+    Button btn_insert, btn_prev, btn_next;
+    GridView gv;
     public GalleryFragment() {
         // Required empty public constructor
     }
@@ -56,7 +57,10 @@ public class GalleryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_gallery, container, false);
         btn_insert = v.findViewById(R.id.btn_insert);
-        final GridView gv = v.findViewById(R.id.gridView);
+        View a = inflater.inflate(R.layout.gallery_expanded, container, false);
+        btn_prev = a.findViewById(R.id.btn_prev);
+        btn_next = a.findViewById(R.id.btn_next);
+        gv = v.findViewById(R.id.gridView);
         SharedPreferences pref = this.getActivity().getSharedPreferences("pref", android.app.Activity.MODE_PRIVATE);
         if ((pref != null) && (pref.contains("x"))) {  // pref가 비어있지 않고 x가 있으면 실행
             x = pref.getString("x", "");    // x 받아오기
@@ -91,7 +95,6 @@ public class GalleryFragment extends Fragment {
                 } catch (Exception e) {
                     Toast.makeText(getActivity().getApplicationContext(), "파일 불러오기 실패", Toast.LENGTH_SHORT).show();
                 }
-                final GridView gv = getView().findViewById(R.id.gridView);
                 MyGridAdapter gAdapter = new MyGridAdapter(getActivity());
                 gv.setAdapter(gAdapter);
             }
@@ -165,6 +168,7 @@ public class GalleryFragment extends Fragment {
 
             final int pos = i;
             imageView.setOnClickListener(new View.OnClickListener() {
+                int prev = pos-1;
                 @Override
                 public void onClick(View view) {
                     View dialogView = View.inflate(getActivity(), R.layout.gallery_expanded, null);
@@ -190,8 +194,8 @@ public class GalleryFragment extends Fragment {
                                     flist[i].delete();
                                 }
                             }
-                            Intent intent = new Intent(getActivity(), MainActivity.class);
-                            startActivity(intent);
+                            MyGridAdapter gAdapter = new MyGridAdapter(getActivity());
+                            gv.setAdapter(gAdapter);
                         }
                     });
                     dlg.setPositiveButton("닫기", null);

@@ -22,10 +22,19 @@
 
     <android.widget.Button
         android:id="@+id/btn_insert"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:onClick="btn1"
-        android:background="#6178E8"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/circular_button"
+        android:text="+"
+        android:textSize="30sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

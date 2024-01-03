@@ -33,20 +33,24 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/nanumbrush"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/luck_wheel" />
 
     <Button
         android:id="@+id/spin_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_below="@id/luck_wheel"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="4dp"
         android:text="오늘의 운세"
+        android:fontFamily="@font/nanumpen"
+        android:background="@drawable/round_button"
         android:textColor="@android:color/white"
-        android:textSize="15sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/luck_wheel"
         app:layout_constraintEnd_toEndOf="@+id/luck_wheel"
         app:layout_constraintStart_toStartOf="@+id/luck_wheel" />

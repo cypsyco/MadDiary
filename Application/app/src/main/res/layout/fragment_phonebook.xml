@@ -20,7 +20,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:queryHint="Search here..."
+        app:queryHint="검색어를 입력해주세요."
         app:iconifiedByDefault="false" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -37,8 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="No Data"
         android:fontFamily="@font/nanumpen"
+        android:text="빈 주소록"
         android:textSize="30sp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

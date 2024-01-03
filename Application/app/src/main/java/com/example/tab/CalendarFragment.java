@@ -13,34 +13,28 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-public class ProfileFragment extends Fragment {
+public class CalendarFragment extends Fragment {
     public CalendarView calendarView;
     private com.bluehomestudio.luckywheel.LuckyWheel luckyWheel;
     java.util.List<com.bluehomestudio.luckywheel.WheelItem> wheelItems ;
 
     String point;
-    public ProfileFragment() {
+    public CalendarFragment() {
         // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View v = inflater.inflate(R.layout.fragment_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_calendar, container, false);
         luckyWheel = v.findViewById(R.id.luck_wheel);
         TextView text = v.findViewById(R.id.text);
         Button start = v.findViewById(R.id.spin_btn);
@@ -125,7 +119,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth)
             {
-                android.content.Intent intent = new Intent(getActivity(), Callendar_sub.class);
+                android.content.Intent intent = new Intent(getActivity(), CalendarDate.class);
                 intent.putExtra("year", year);
                 intent.putExtra("month", month);
                 intent.putExtra("dayOfMonth", dayOfMonth);

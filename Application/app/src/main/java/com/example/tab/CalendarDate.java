@@ -1,29 +1,20 @@
 package com.example.tab;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,14 +22,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import android.content.Intent;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Callendar_sub extends AppCompatActivity {
+public class CalendarDate extends AppCompatActivity {
     public String readDay = null;
     public String readDay2 = null;
     public String str = null;
@@ -58,7 +46,7 @@ public class Callendar_sub extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_callendar_sub);
+        setContentView(R.layout.activity_calendar_date);
         Intent intent = getIntent();
         int year = intent.getIntExtra("year", 0);
         int month = intent.getIntExtra("month", 0);
@@ -113,7 +101,7 @@ public class Callendar_sub extends AppCompatActivity {
         image_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Callendar_sub.this, Callendar_Gallery.class);
+                Intent intent = new Intent(CalendarDate.this, CalendarGallery.class);
                 intent.putExtra("year", year);
                 intent.putExtra("month", month);
                 intent.putExtra("dayOfMonth", dayOfMonth);
@@ -171,7 +159,7 @@ public class Callendar_sub extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start AddressFragment.class activity here
-                Intent intent = new Intent(Callendar_sub.this, Callendar_Address.class);
+                Intent intent = new Intent(CalendarDate.this, CalendarAddress.class);
                 intent.putExtra("year", year);
                 intent.putExtra("month", month);
                 intent.putExtra("dayOfMonth", dayOfMonth);
@@ -200,7 +188,7 @@ public class Callendar_sub extends AppCompatActivity {
         //태그된 친구들 RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
 
-        adapter = new PhoneBookAdapter(this, Callendar_sub.class, year, month, dayOfMonth);
+        adapter = new PhoneBookAdapter(this, CalendarDate.class, year, month, dayOfMonth);
 
         recyclerView.setAdapter(adapter);
 

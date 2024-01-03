@@ -25,7 +25,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class AddActivity extends AppCompatActivity {
+public class PhoneBookAddActivity extends AppCompatActivity {
 
     Uri uri;
     ImageView imageView;
@@ -35,7 +35,7 @@ public class AddActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+        setContentView(R.layout.activity_phonebook_add);
 
         addNameEdit = findViewById(R.id.add_name_edit);
         addPhoneEdit = findViewById(R.id.add_phone_edit);
@@ -72,7 +72,7 @@ public class AddActivity extends AppCompatActivity {
 
                 byte[] data = imageViewToByte(imageView);
 
-                PhoneBookDB addressDB = new PhoneBookDB(AddActivity.this);
+                PhoneBookDB addressDB = new PhoneBookDB(PhoneBookAddActivity.this);
                 addressDB.addPhoneNumber(name, phone, data);
 
                 TabLayout tab;
@@ -83,7 +83,7 @@ public class AddActivity extends AppCompatActivity {
                 tab=findViewById(R.id.tab);
                 viewPager=findViewById(R.id.viewpager);
 
-                viewPagerAdapter ad =new viewPagerAdapter(getSupportFragmentManager());
+                ViewPagerAdapter ad =new ViewPagerAdapter(getSupportFragmentManager());
                 viewPager.setAdapter(ad);
 
                 tab.setupWithViewPager(viewPager);

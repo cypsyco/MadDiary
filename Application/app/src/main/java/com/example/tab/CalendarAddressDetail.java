@@ -14,7 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class DetailActivity extends AppCompatActivity {
+public class CalendarAddressDetail extends AppCompatActivity {
 
     EditText updateNameEdit, updatePhoneEdit;
     ImageView updateImageView;
@@ -24,7 +24,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_address_detail);
 
         updateNameEdit = findViewById(R.id.update_name_edit);
         updatePhoneEdit = findViewById(R.id.update_phone_edit);
@@ -41,7 +41,7 @@ public class DetailActivity extends AppCompatActivity {
                 String name = updateNameEdit.getText().toString();
                 String phoneNumber = updatePhoneEdit.getText().toString();
 
-                PhoneBookDB db = new PhoneBookDB(DetailActivity.this);
+                PhoneBookDB db = new PhoneBookDB(CalendarAddressDetail.this);
                 db.updateData(id, name, phoneNumber);
 
                 TabLayout tab;
@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity {
                 tab=findViewById(R.id.tab);
                 viewPager=findViewById(R.id.viewpager);
 
-                viewPagerAdapter ad =new viewPagerAdapter(getSupportFragmentManager());
+                ViewPagerAdapter ad =new ViewPagerAdapter(getSupportFragmentManager());
                 viewPager.setAdapter(ad);
 
                 tab.setupWithViewPager(viewPager);
@@ -64,7 +64,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                PhoneBookDB db = new PhoneBookDB(DetailActivity.this);
+                PhoneBookDB db = new PhoneBookDB(CalendarAddressDetail.this);
                 db.deleteData(id);
 
                 TabLayout tab;
@@ -75,7 +75,7 @@ public class DetailActivity extends AppCompatActivity {
                 tab=findViewById(R.id.tab);
                 viewPager=findViewById(R.id.viewpager);
 
-                viewPagerAdapter ad =new viewPagerAdapter(getSupportFragmentManager());
+                ViewPagerAdapter ad =new ViewPagerAdapter(getSupportFragmentManager());
                 viewPager.setAdapter(ad);
 
                 tab.setupWithViewPager(viewPager);
