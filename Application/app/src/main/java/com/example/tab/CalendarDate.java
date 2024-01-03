@@ -31,7 +31,7 @@ public class CalendarDate extends AppCompatActivity {
     public String readDay2 = null;
     public String str = null;
     public String str2 = null;
-    public Button cha_Btn, del_Btn, save_Btn, image_add, address_add;
+    public Button cha_Btn, del_Btn, save_Btn, image_add, address_add, address_reset;
     public TextView diaryTextView, textView, textView2, image_text, address_text;
     public EditText contextEditText, contextEditText2;
 
@@ -68,6 +68,7 @@ public class CalendarDate extends AppCompatActivity {
         contextEditText2 = findViewById(R.id.contextEditText2);
         image_add = findViewById(R.id.image_add);
         address_add = findViewById(R.id.address_add);
+        address_reset = findViewById(R.id.address_reset);
         image_text = findViewById(R.id.image_text);
         address_text = findViewById(R.id.address_text);
         diaryTextView.setVisibility(View.VISIBLE);
@@ -79,6 +80,7 @@ public class CalendarDate extends AppCompatActivity {
         cha_Btn.setVisibility(View.INVISIBLE);
         del_Btn.setVisibility(View.INVISIBLE);
         address_add.setVisibility(View.INVISIBLE);
+        address_reset.setVisibility(View.INVISIBLE);
         image_add.setVisibility(View.VISIBLE);
         address_text.setVisibility(View.INVISIBLE);
         image_text.setVisibility(View.VISIBLE);
@@ -95,6 +97,7 @@ public class CalendarDate extends AppCompatActivity {
             imageView.setImageBitmap(bm);
             saveImage(readDay, bm);
             address_add.setVisibility(View.VISIBLE);
+            address_reset.setVisibility(View.VISIBLE);
             address_text.setVisibility(View.VISIBLE);
         }
 
@@ -167,6 +170,15 @@ public class CalendarDate extends AppCompatActivity {
             }
         });
 
+        address_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contextEditText.setText("");
+                removeDiary(readDay);
+                recyclerView.setVisibility(View.INVISIBLE);
+            }
+        });
+
         String name = "";
 
         if (intent.hasExtra("id")) {
@@ -177,6 +189,7 @@ public class CalendarDate extends AppCompatActivity {
             contextEditText.setText(textView.getText() + name + ",");
             saveDiary(readDay);
             address_add.setVisibility(View.VISIBLE);
+            address_reset.setVisibility(View.VISIBLE);
             address_text.setVisibility(View.VISIBLE);
         }
         if (intent.hasExtra("phone_number")) {
@@ -253,6 +266,7 @@ public class CalendarDate extends AppCompatActivity {
             //이미지 불러온 상태에서는 친구추가 버튼 활성화
             if (imageView.getDrawable() != null) {
                 address_add.setVisibility(View.VISIBLE);
+                address_reset.setVisibility(View.VISIBLE);
                 address_text.setVisibility(View.VISIBLE);
             }
 
@@ -364,6 +378,24 @@ public class CalendarDate extends AppCompatActivity {
                 del_Btn.setVisibility(View.INVISIBLE);
                 contextEditText2.setVisibility(View.VISIBLE);
             }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressLint("WrongConstant")
+    public void removeDiary(String readDay)
+    {
+        FileOutputStream fos;
+        try
+        {
+            fos = openFileOutput(readDay, MODE_NO_LOCALIZED_COLLATORS);
+            String content = "";
+            fos.write((content).getBytes());
+            fos.close();
+
         }
         catch (Exception e)
         {

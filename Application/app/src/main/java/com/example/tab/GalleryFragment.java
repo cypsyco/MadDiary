@@ -40,7 +40,7 @@ import android.widget.GridView;
 
 
 public class GalleryFragment extends Fragment {
-    public int q = 0;
+    public int q, z = 0;
     String x = "";
     String img_name = "osz.png";
     Button btn_insert;
@@ -57,12 +57,12 @@ public class GalleryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_gallery, container, false);
         btn_insert = v.findViewById(R.id.btn_insert);
-        View a = inflater.inflate(R.layout.gallery_expanded, container, false);
         gv = v.findViewById(R.id.gridView);
         SharedPreferences pref = this.getActivity().getSharedPreferences("pref", android.app.Activity.MODE_PRIVATE);
         if ((pref != null) && (pref.contains("x"))) {  // pref가 비어있지 않고 x가 있으면 실행
             x = pref.getString("x", "");    // x 받아오기
             q = pref.getInt("i", 0);    // i 받아오기
+            z = pref.getInt("z", 0);
         }
         MyGridAdapter gAdapter = new MyGridAdapter(getActivity());
         gv.setAdapter(gAdapter);
@@ -107,6 +107,7 @@ public class GalleryFragment extends Fragment {
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("x", x);   // x에 x 저장하기
         editor.putInt("i", q);  // i에 i 저장하기
+        editor.putInt("z", z);
         editor.commit();    // 입력했으면 이걸 필수로 해줘야 함 없을시 저장 안됨
         try {
             tempFile.createNewFile();   // 자동으로 빈 파일을 생성하기
@@ -144,16 +145,23 @@ public class GalleryFragment extends Fragment {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             ImageView imageView = new ImageView(context);
-            imageView.setLayoutParams(new ViewGroup.LayoutParams(250, 250));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(5, 400, 5, 5);
-            String ask = img_name.concat(Integer.toString(i));
+            imageView.setLayoutParams(new ViewGroup.LayoutParams(350, 350));
+            imageView.setScaleType(ImageView.ScaleType.CENTER);
+            imageView.setPadding(5, 5, 5, 5);
+            String ask = img_name.concat(Integer.toString(i+z));
             try {
                 String img_path = getActivity().getCacheDir() + "/" + ask;   // 내부 저장소에 저장되어 있는 이미지 경로
                 Bitmap bm = BitmapFactory.decodeFile(img_path);
                 while(bm == null){
-                    i++;
-                    ask = img_name.concat(Integer.toString(i));
+                    z++;
+                    x = "OSZ";
+                    SharedPreferences pref = getActivity().getSharedPreferences("pref", android.app.Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("x", x);   // x에 x 저장하기
+                    editor.putInt("i", q);  // i에 i 저장하기
+                    editor.putInt("z", z);
+                    editor.commit();
+                    ask = img_name.concat(Integer.toString(i+z));
                     img_path = getActivity().getCacheDir() + "/" + ask;
                     bm = BitmapFactory.decodeFile(img_path);
                 }
@@ -164,9 +172,8 @@ public class GalleryFragment extends Fragment {
             }
 
 
-            final int pos = i;
+            final int pos = i+z;
             imageView.setOnClickListener(new View.OnClickListener() {
-                int prev = pos-1;
                 @Override
                 public void onClick(View view) {
                     View dialogView = View.inflate(getActivity(), R.layout.gallery_expanded, null);
