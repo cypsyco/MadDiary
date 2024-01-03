@@ -75,18 +75,22 @@ public class PhoneBookAddActivity extends AppCompatActivity {
                 PhoneBookDB addressDB = new PhoneBookDB(PhoneBookAddActivity.this);
                 addressDB.addPhoneNumber(name, phone, data);
 
+                // 다음 코드는 두 번째 탭으로 이동합니다.
                 TabLayout tab;
                 ViewPager viewPager;
 
                 setContentView(R.layout.activity_main);
 
-                tab=findViewById(R.id.tab);
-                viewPager=findViewById(R.id.viewpager);
+                tab = findViewById(R.id.tab);
+                viewPager = findViewById(R.id.viewpager);
 
-                ViewPagerAdapter ad =new ViewPagerAdapter(getSupportFragmentManager());
+                ViewPagerAdapter ad = new ViewPagerAdapter(getSupportFragmentManager());
                 viewPager.setAdapter(ad);
 
                 tab.setupWithViewPager(viewPager);
+
+                // 두 번째 탭으로 자동 전환
+                viewPager.setCurrentItem(1);
             }
         }
         );
